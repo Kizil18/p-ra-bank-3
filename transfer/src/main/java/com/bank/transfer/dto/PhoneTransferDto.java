@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -27,7 +26,6 @@ public class PhoneTransferDto implements Serializable {
 
     Long phoneNumber;
 
-    @Positive(message = "Сумма перевода должна быть больше нуля")
     BigDecimal amount;
 
     String purpose;
