@@ -22,12 +22,10 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PhoneTransferDto implements Serializable {
+
     Long id;
-
     Long phoneNumber;
-
     BigDecimal amount;
-
     String purpose;
     Long accountDetailsId;
 }
