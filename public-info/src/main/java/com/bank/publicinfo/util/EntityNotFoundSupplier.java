@@ -11,6 +11,7 @@ import java.util.List;
 @Component
 public class EntityNotFoundSupplier {
 
+
     public EntityNotFoundException getException(String message, Long id) {
         return new EntityNotFoundException(id + message);
     }
