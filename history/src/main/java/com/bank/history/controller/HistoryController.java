@@ -59,7 +59,7 @@ public class HistoryController {
      * @return {@link ResponseEntity} c {@link HistoryDto} и HttpStatus OK
      */
     @PutMapping("/{id}")
-    public ResponseEntity<HistoryDto> update(@PathVariable Long id,
+    public ResponseEntity<HistoryDto> update(@PathVariable("id") Long id,
                                              @RequestBody HistoryDto history) {
         return new ResponseEntity<>(service.update(id, history), HttpStatus.OK);
     }
