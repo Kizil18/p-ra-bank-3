@@ -3,10 +3,11 @@ package com.bank.publicinfo.dto;
 import com.bank.publicinfo.entity.BranchEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
 import java.io.Serializable;
@@ -17,6 +18,7 @@ import java.time.LocalTime;
  */
 @Getter
 @Setter
+@Builder
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
