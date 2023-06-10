@@ -22,7 +22,7 @@ public class AuditController {
 
     /**
      * @param id технический идентификатор {@link AuditEntity}
-     * @return {@link ResponseEntity<AuditDto>}
+     * @return {@link ResponseEntity<  AuditDto  >}
      */
     @GetMapping("/{id}")
     public AuditDto read(@PathVariable("id") Long id) {

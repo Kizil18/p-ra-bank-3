@@ -31,7 +31,7 @@ public class AccountTransferController {
      * @return {@link ResponseEntity} c листом {@link AccountTransferDto}
      */
     @GetMapping("/read/all")
-    public ResponseEntity<List<AccountTransferDto>> readAll(@RequestParam List<Long> ids) {
+    public ResponseEntity<List<AccountTransferDto>> readAll(@RequestParam("id") List<Long> ids) {
         return ResponseEntity.ok(service.findAllById(ids));
     }
 

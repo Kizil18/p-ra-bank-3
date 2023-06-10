@@ -31,7 +31,7 @@ public class CardTransferController {
      * @return {@link ResponseEntity} c листом {@link CardTransferDto}
      */
     @GetMapping("/read/all")
-    public ResponseEntity<List<CardTransferDto>> readAll(@RequestParam List<Long> ids) {
+    public ResponseEntity<List<CardTransferDto>> readAll(@RequestParam("id") List<Long> ids) {
         return ResponseEntity.ok(service.findAllById(ids));
     }
 

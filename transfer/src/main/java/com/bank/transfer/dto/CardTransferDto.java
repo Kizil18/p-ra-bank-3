@@ -24,11 +24,8 @@ import java.math.BigDecimal;
 public class CardTransferDto implements Serializable {
 
     Long id;
-
     Long cardNumber;
-
     BigDecimal amount;
-
     String purpose;
     Long accountDetailsId;
 }

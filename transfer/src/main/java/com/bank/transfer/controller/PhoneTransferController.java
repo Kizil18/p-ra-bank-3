@@ -31,7 +31,7 @@ public class PhoneTransferController {
      * @return {@link ResponseEntity} c листом {@link PhoneTransferDto}
      */
     @GetMapping("/read/all")
-    public ResponseEntity<List<PhoneTransferDto>> readAll(@RequestParam List<Long> ids) {
+    public ResponseEntity<List<PhoneTransferDto>> readAll(@RequestParam("id") List<Long> ids) {
         return ResponseEntity.ok(service.findAllById(ids));
     }
 
