@@ -21,7 +21,12 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.anyList;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class HistoryServiceImplTest {
@@ -105,7 +110,9 @@ class HistoryServiceImplTest {
     void updatePositiveTest() {
         Long historyId = 123L;
         HistoryDto expectedHistoryDto = new HistoryDto
-                (123L, 1L, 2L, 3L, 4L, 5L, 6L);
+                (123L, 1L, 2L, 3L,
+                        4L, 5L, 6L
+                );
 
         when(historyRepository.findById(historyId)).thenReturn(Optional.of(historyEntity1));
         when(historyMapper.toDto(Mockito.any(HistoryEntity.class))).thenReturn(expectedHistoryDto);

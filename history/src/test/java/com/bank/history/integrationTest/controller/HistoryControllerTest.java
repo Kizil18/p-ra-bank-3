@@ -1,6 +1,5 @@
 package com.bank.history.integrationTest.controller;
 
-import com.bank.history.TestBean;
 import com.bank.history.dto.HistoryDto;
 import com.bank.history.entity.HistoryEntity;
 import com.bank.history.repository.HistoryRepository;

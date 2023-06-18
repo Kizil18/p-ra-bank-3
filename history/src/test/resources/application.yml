@@ -2,11 +2,3 @@ spring:
   sql:
     init:
       mode: always
-  liquibase:
-    default-schema: history
-    change-log: db/changelog/db.changelog-master.yaml
-    enabled: true
-    drop-first: false
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
