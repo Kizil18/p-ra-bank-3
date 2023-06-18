@@ -3,6 +3,8 @@ package com.bank.authorization.controller;
 import com.bank.authorization.dto.UserDto;
 import com.bank.authorization.entity.UserEntity;
 import com.bank.authorization.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "Контроллер для аутентификации пользователей")
 public class UserController {
 
     private final UserService service;
@@ -30,6 +33,7 @@ public class UserController {
      * @return {@link ResponseEntity}, {@link UserDto} и HttpStatus.OK
      */
     @PostMapping("/create")
+    @Operation(summary = "Создание нового пользователя")
     public ResponseEntity<UserDto> create(@RequestBody UserDto user) {
         return new ResponseEntity<>(service.save(user), HttpStatus.CREATED);
     }
@@ -39,6 +43,7 @@ public class UserController {
      * @return {@link ResponseEntity}, {@link UserDto} и HttpStatus.OK
      */
     @GetMapping("/read/{id}")
+    @Operation(summary = "Получение информации о пользователе по ID")
     public ResponseEntity<UserDto> read(@PathVariable("id") Long id) {
         return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
     }
@@ -48,6 +53,7 @@ public class UserController {
      * @return {@link ResponseEntity}, {@link UserDto} и HttpStatus.OK
      */
     @PutMapping("/{id}/update")
+    @Operation(summary = "Обновление информацию о пользователе по ID")
     public ResponseEntity<UserDto> update(@PathVariable("id") Long id,
                                           @RequestBody UserDto user) {
         return new ResponseEntity<>(service.update(id, user), HttpStatus.OK);
@@ -58,6 +64,7 @@ public class UserController {
      * @return {@link ResponseEntity}, {@link UserDto} и HttpStatus.OK
      */
     @GetMapping("/read/all")
+    @Operation(summary = "Получение информации обо всех пользователях")
     public ResponseEntity<List<UserDto>> readAll(@RequestParam List<Long> ids) {
         return new ResponseEntity<>(service.findAllByIds(ids), HttpStatus.OK);
     }
