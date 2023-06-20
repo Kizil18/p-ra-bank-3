@@ -3,6 +3,8 @@ package com.bank.publicinfo.controller;
 import com.bank.publicinfo.dto.BankDetailsDto;
 import com.bank.publicinfo.entity.BankDetailsEntity;
 import com.bank.publicinfo.service.BankDetailsService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/bank/details")
+@Tag(name = "Контроллер для банковских реквизитов")
 public class BankDetailsController {
 
     private final BankDetailsService service;
@@ -32,6 +35,7 @@ public class BankDetailsController {
      * @return {@link ResponseEntity}, {@link BankDetailsDto} и HttpStatus.OK
      */
     @GetMapping("/{id}")
+    @Operation(summary = "Получение сведений о банковских реквизитах по идентификатору")
     private ResponseEntity<BankDetailsDto> readById(@PathVariable("id") Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
@@ -41,6 +45,7 @@ public class BankDetailsController {
      * @return {@link ResponseEntity}, лист {@link BankDetailsDto} и HttpStatus.OK
      */
     @GetMapping("/read/all")
+    @Operation(summary = "Получение сведений о банковских реквизитах по нескольким идентификаторам")
     private ResponseEntity<List<BankDetailsDto>> readAllById(@RequestParam List<Long> ids) {
         return ResponseEntity.ok().body(service.findAllById(ids));
     }
@@ -50,6 +55,7 @@ public class BankDetailsController {
      * @return {@link ResponseEntity}, {@link BankDetailsDto} и HttpStatus.OK
      */
     @PostMapping("/create")
+    @Operation(summary = "Создание сведений о банковских реквизитах")
     private ResponseEntity<BankDetailsDto> create(@Valid @RequestBody BankDetailsDto bankDetails) {
         return ResponseEntity.ok().body(service.create(bankDetails));
     }
@@ -60,6 +66,7 @@ public class BankDetailsController {
      * @return {@link ResponseEntity}, {@link BankDetailsDto} и HttpStatus.OK
      */
     @PutMapping("/update/{id}")
+    @Operation(summary = "Обновление сведений о банковских реквизитах по идентификатору")
     private ResponseEntity<BankDetailsDto> update(@PathVariable("id") Long id,
                                                   @Valid @RequestBody BankDetailsDto bankDetails) {
         return ResponseEntity.ok().body(service.update(id, bankDetails));

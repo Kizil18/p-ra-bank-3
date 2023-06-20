@@ -4,6 +4,8 @@ import com.bank.publicinfo.service.BranchService;
 import com.bank.publicinfo.dto.BankDetailsDto;
 import com.bank.publicinfo.dto.BranchDto;
 import com.bank.publicinfo.entity.BranchEntity;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/branch")
+@Tag(name = "Контроллер для отделений банка")
 public class BranchController {
 
     private final BranchService service;
@@ -32,6 +35,7 @@ public class BranchController {
      * @return {@link ResponseEntity}, {@link BankDetailsDto} и HttpStatus.OK
      */
     @GetMapping("/{id}")
+    @Operation(summary = "Получение сведений об отделении банка по идентификатору")
     private ResponseEntity<BranchDto> readById(@PathVariable("id") Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
@@ -41,6 +45,7 @@ public class BranchController {
      * @return {@link ResponseEntity}, лист {@link BranchDto} и HttpStatus.OK
      */
     @GetMapping("/read/all")
+    @Operation(summary = "Получение сведений об отделениях банка по нескольким идентификаторам")
     private ResponseEntity<List<BranchDto>> readAllById(@RequestParam List<Long> ids) {
         return ResponseEntity.ok().body(service.findAllById(ids));
     }
@@ -50,6 +55,7 @@ public class BranchController {
      * @return {@link ResponseEntity}, {@link BranchDto} и HttpStatus.OK
      */
     @PostMapping("/create")
+    @Operation(summary = "Создание сведений об отделении банка")
     private ResponseEntity<BranchDto> create(@RequestBody BranchDto branch) {
         return ResponseEntity.ok().body(service.create(branch));
     }
@@ -60,6 +66,7 @@ public class BranchController {
      * @return {@link ResponseEntity}, {@link BranchDto} и HttpStatus.OK
      */
     @PutMapping("/update/{id}")
+    @Operation(summary = "Обновление сведений об отделении банка по идентификатору")
     private ResponseEntity<BranchDto> update(@PathVariable("id") Long id,
                                              @RequestBody BranchDto branch) {
         return ResponseEntity.ok().body(service.update(id, branch));
