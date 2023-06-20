@@ -3,6 +3,8 @@ package com.bank.antifraud.controller;
 import com.bank.antifraud.dto.SuspiciousAccountTransferDto;
 import com.bank.antifraud.entity.SuspiciousAccountTransferEntity;
 import com.bank.antifraud.service.SuspiciousAccountTransferService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/suspicious/account/transfer")
+@Tag(name = "Контроллер для подозрительных переводов по номеру cчёта")
 public class SuspiciousAccountTransferController {
     private final SuspiciousAccountTransferService service;
 
@@ -31,6 +34,7 @@ public class SuspiciousAccountTransferController {
      * @return {@link ResponseEntity} {@link SuspiciousAccountTransferDto}
      */
     @GetMapping("/{id}")
+    @Operation(summary = "Получение информации о подозрительном переводе по номеру cчёта по id перевода")
     public ResponseEntity<SuspiciousAccountTransferDto> read(@PathVariable("id") Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
@@ -40,6 +44,7 @@ public class SuspiciousAccountTransferController {
      * @return {@link ResponseEntity} c листом {@link SuspiciousAccountTransferDto}
      */
     @GetMapping
+    @Operation(summary = "Получение информации о всех подозрительных переводах по номеру cчёта из списка id переводов")
     public ResponseEntity<List<SuspiciousAccountTransferDto>> readAll(@RequestParam List<Long> ids) {
         return ResponseEntity.ok(service.findAllById(ids));
     }
@@ -49,6 +54,7 @@ public class SuspiciousAccountTransferController {
      * @return {@link ResponseEntity} {@link SuspiciousAccountTransferDto}
      */
     @PostMapping("/create")
+    @Operation(summary = "Создание записи о подозрительном переводе по номеру cчёта")
     public ResponseEntity<SuspiciousAccountTransferDto> create(
             @Valid @RequestBody SuspiciousAccountTransferDto suspiciousTransfer) {
         return ResponseEntity.ok(service.save(suspiciousTransfer));
@@ -60,6 +66,7 @@ public class SuspiciousAccountTransferController {
      * @return {@link ResponseEntity} {@link SuspiciousAccountTransferDto}
      */
     @PutMapping("/{id}")
+    @Operation(summary = "Обновление данных о подозрительном переводе по номеру cчёта по id перевода")
     public ResponseEntity<SuspiciousAccountTransferDto> update(
             @RequestBody SuspiciousAccountTransferDto suspiciousTransfer,
             @PathVariable("id") Long id) {
