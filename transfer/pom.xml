@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>17</java.version>
+        <pre.liquibase>1.3.0</pre.liquibase>
     </properties>
 
     <dependencies>
@@ -36,25 +37,7 @@
         <dependency>
             <groupId>net.lbruun.springboot</groupId>
             <artifactId>preliquibase-spring-boot-starter</artifactId>
-            <version>1.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>testcontainers</artifactId>
-            <version>1.18.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>1.18.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>1.18.3</version>
-            <scope>test</scope>
+            <version>${pre.liquibase}</version>
         </dependency>
     </dependencies>
 
