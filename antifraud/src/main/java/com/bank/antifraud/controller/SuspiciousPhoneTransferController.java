@@ -22,7 +22,6 @@ import java.util.List;
 /**
  * Контроллер для {@link SuspiciousPhoneTransferDto}
  */
-// TODO отрекфакторить также как SuspiciousAccountTransferController
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/suspicious/phone/transfer")
